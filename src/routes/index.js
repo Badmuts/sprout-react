@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import App from '../components/App';
 import LoginContainer from '../containers/LoginContainer';
+import AdvertisementContainer from '../containers/AdvertisementContainer';
 import Auth from '../components/Auth';
 import auth from '../store/auth';
 
@@ -25,5 +26,6 @@ export default (
         <Route exact path="/login" component={LoginContainer}/>
         <Route exact path="/register" component={App}/>
         <PrivateRoute exact path="/auth" component={Auth}/>
+        <PrivateRoute exact path="/ads" component={AdvertisementContainer}/>
     </Switch>
 );

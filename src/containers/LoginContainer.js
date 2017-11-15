@@ -10,15 +10,16 @@ class LoginContainer extends Component {
         this.state = {
             email: '',
             password: '',
-            loggedIn: auth.isAuthenticated()
+            loggedIn: auth.isAuthenticated(),
+            errorMessage: ''
         };
     }
 
     handleOnSubmit = (event) => {
         event.preventDefault();
         login(this.state.email, this.state.password)
-            .then((response) => this.setState({loggedIn: auth.isAuthenticated()}))
-            .catch((err) => console.error('Oops', err));
+            .then(this.setState({loggedIn: auth.isAuthenticated()}))
+            .catch(this.setState({errorMessage: 'Oeps! Er ging iets mis. Probeer het opnieuw'}));
     }
 
     handleOnChange = (propertyName, event) => {
@@ -28,14 +29,20 @@ class LoginContainer extends Component {
     }
 
     render() {
-        const { loggedIn } = this.state;
+        const { loggedIn, errorMessage } = this.state;
         
         if (loggedIn) {
             return (<Redirect to="/auth" />)
         }
 
         return (
-            <LoginForm onSubmit={this.handleOnSubmit} onChange={this.handleOnChange} />
+            <LoginForm 
+                onSubmit={this.handleOnSubmit} 
+                onChange={this.handleOnChange}>
+                {errorMessage && (
+                    <div>{errorMessage}</div>
+                )}
+            </LoginForm>
         );
     }
 }
