@@ -1,5 +1,9 @@
+import { getToken } from './token';
+
 const auth = {
-    isAuthenticated: false
+    isAuthenticated: function() {
+        return (getToken() !== null)
+    }
 };
 
 export default auth;
