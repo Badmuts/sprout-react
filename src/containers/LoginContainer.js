@@ -30,9 +30,10 @@ class LoginContainer extends Component {
 
     render() {
         const { loggedIn, errorMessage } = this.state;
+        const { from } = this.props.location.state || { from: { pathname: '/' } };
         
         if (loggedIn) {
-            return (<Redirect to="/auth" />)
+            return (<Redirect to={from} />)
         }
 
         return (
