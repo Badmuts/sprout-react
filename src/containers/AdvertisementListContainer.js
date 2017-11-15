@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AdvertisementList from '../components/AdvertisementList';
 import { findAdvertisements } from '../endpoints/advertisement';
 
-export default class AdvertisementContainer extends Component {
+export default class AdvertisementListContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { advertisements: [] };

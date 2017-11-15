@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm from '../components/LoginForm';
-import { login } from '../store/api';
+import { login } from '../endpoints/auth';
 import { Redirect } from 'react-router-dom';
 import auth from '../store/auth';
 

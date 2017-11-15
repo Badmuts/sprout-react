@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import App from '../components/App';
 import LoginContainer from '../containers/LoginContainer';
-import AdvertisementContainer from '../containers/AdvertisementContainer';
+import AdvertisementListContainer from '../containers/AdvertisementListContainer';
 import auth from '../store/auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -15,7 +15,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
                 <Component {...props}/>
             ) : (
                 <Redirect to={{ 
-                    pathname: '/login', 
+                    pathname: '/auth/login', 
                     state: { from: props.location } 
                 }}/>
             )
@@ -25,8 +25,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 export default (
     <Switch>
         <Route exact path="/" component={App}/>
-        <Route exact path="/login" component={LoginContainer}/>
+        <Route exact path="/auth/login" component={LoginContainer}/>
         <Route exact path="/register" component={App}/>
-        <PrivateRoute exact path="/ads" component={AdvertisementContainer}/>
+        <PrivateRoute exact path="/advertisements" component={AdvertisementListContainer}/>
     </Switch>
 );
