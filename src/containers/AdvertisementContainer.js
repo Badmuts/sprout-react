@@ -10,7 +10,8 @@ export default class AdvertisementContainer extends Component {
 
     componentDidMount() {
         findAdvertisements()
-            .then((res) => this.setState({ advertisements: res.data.results }))
+            .then(res => this.setState({ advertisements: res.data.results }))
+            .catch(err => this.setState({ errorMessage: "Kon op dit moment geen advertenties ophalen. Probeer het later opnieuw."}))
     }
 
     render() {
