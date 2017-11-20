@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import LoginForm from '../components/LoginForm';
-import { login } from '../endpoints/auth';
-import { Redirect, Link } from 'react-router-dom';
+import { register } from '../endpoints/auth';
+import { Redirect } from 'react-router-dom';
 import auth from '../store/auth';
 import { Callout, Intent } from '@blueprintjs/core';
 
-class LoginContainer extends Component {
+export default class RegisterContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,9 +18,9 @@ class LoginContainer extends Component {
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        login(this.state.email, this.state.password)
-            .then(this.setState({loggedIn: auth.isAuthenticated()}))
-            .catch(this.setState({errorMessage: 'Er ging iets mis. Probeer het opnieuw'}));
+        register(this.state.email, this.state.password)
+            .then(this.setState({loggedIn: true}))
+            .catch(this.setState({errorMessage: 'Oeps! Er ging iets mis. Probeer het opnieuw'}));
     }
 
     handleOnChange = (propertyName, event) => {
@@ -31,16 +31,15 @@ class LoginContainer extends Component {
 
     render() {
         const { loggedIn, errorMessage } = this.state;
-        const { from } = this.props.location.state || { from: { pathname: '/' } };
         
         if (loggedIn) {
-            return (<Redirect to={from} />)
+            return (<Redirect to="/auth/login" />)
         }
 
         return (
             <div className="Container">
                 <LoginForm 
-                    title="Login"
+                    title="Register"
                     onSubmit={this.handleOnSubmit} 
                     onChange={this.handleOnChange}>
                     {errorMessage && (
@@ -50,11 +49,7 @@ class LoginContainer extends Component {
                         </Callout>
                     )}
                 </LoginForm>
-                <Link className="pt-button pt-minimal" to="/auth/register">Register</Link>
             </div>
-            
         );
     }
 }
-
-export default LoginContainer;

@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import App from '../components/App';
 import LoginContainer from '../containers/LoginContainer';
+import RegisterContainer from '../containers/RegisterContainer';
 import AdvertisementListContainer from '../containers/AdvertisementListContainer';
 import auth from '../store/auth';
 
@@ -23,11 +24,14 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 export default (
-    <Switch>
-        <Route exact path="/" component={App}/>
-        <Route exact path="/auth/login" component={LoginContainer}/>
-        <Route exact path="/register" component={App}/>
-        <PrivateRoute exact path="/advertisements" component={AdvertisementListContainer}/>
-        <Redirect to="/advertisements" />
-    </Switch>
+    <App>
+       <Switch>
+            <Route exact path="/auth/login" component={LoginContainer}/>
+            <Route exact path="/auth/register" component={RegisterContainer}/>
+            <PrivateRoute exact path="/demand" component={AdvertisementListContainer}/>
+            <PrivateRoute exact path="/supply" component={AdvertisementListContainer}/>
+            <Redirect to="/demand" />
+        </Switch> 
+    </App>
+    
 );

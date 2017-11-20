@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import AdvertisementList from '../components/AdvertisementList';
 import { findAdvertisements } from '../endpoints/advertisement';
+import {NonIdealState, Spinner} from '@blueprintjs/core';
 
 export default class AdvertisementListContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = { advertisements: [] };
+        this.state = { advertisements: [], loading: true };
     }
 
     componentDidMount() {
         findAdvertisements()
-            .then(res => this.setState({ advertisements: res.data.results }))
-            .catch(err => this.setState({ errorMessage: "Kon op dit moment geen advertenties ophalen. Probeer het later opnieuw."}))
+            .then(res => this.setState({ advertisements: res.data.results, loading: false }))
+            .catch(err => this.setState({ errorMessage: "Kon op dit moment geen advertenties ophalen. Probeer het later opnieuw.", loading: false}))
     }
 
     render() {
-        const { advertisements } = this.state;
+        const { advertisements, loading } = this.state;
         return (
-            <div>
+            <div className="Container">
                 <h1>Advertenties</h1>
-                <AdvertisementList advertisements={advertisements} />
+                {loading 
+                    ? (<NonIdealState visual={<Spinner />} />)
+                    : (<AdvertisementList advertisements={advertisements} />)}
             </div>
         );
     }

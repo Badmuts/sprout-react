@@ -7,3 +7,5 @@ export const login = (email, password) =>
             setToken(res.data.jwt)
             return res;
         });
+
+export const register = (email, password) => http.post("/users", {email, password});

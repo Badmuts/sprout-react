@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
+import { Card } from '@blueprintjs/core';
 
 export default class AdvertisementList extends Component {
   render() {    
     return (
       <div>
-        <ul>{this.props.advertisements.map(this.renderAdvertisment)}</ul>
+        {this.props.advertisements.map(this.renderAdvertisment)}
       </div>
     );
   }
 
   renderAdvertisment(ad) {
-    return (<li key={ad.id}>Aantal: {ad.amount}, Prijs: &euro; {ad.price}, Bedrijf: {ad.company.name}</li>)
+    return (
+      <Card key={ad.id} className="row middle-xs">
+        <div className="col-xs"><p>{ad.amount}</p></div>
+        <div className="col-xs"><p>&euro; {ad.price}</p></div>
+        <div className="col-xs"><p>{ad.title}</p></div>
+        <div className="col-xs"><p>{ad.company.name}</p></div>
+      </Card>
+    )
   }
 }
