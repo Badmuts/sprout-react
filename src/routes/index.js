@@ -28,5 +28,6 @@ export default (
         <Route exact path="/auth/login" component={LoginContainer}/>
         <Route exact path="/register" component={App}/>
         <PrivateRoute exact path="/advertisements" component={AdvertisementListContainer}/>
+        <Redirect to="/advertisements" />
     </Switch>
 );
