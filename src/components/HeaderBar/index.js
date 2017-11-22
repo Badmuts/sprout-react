@@ -13,7 +13,7 @@ export default class HeaderBar extends Component {
                         <span className="HeaderBar-divider"></span>
                         <FormGroup label="Trefwoord" labelFor="search">
                             <div className="pt-input-group">
-                                <input className="pt-input" type="text"  id="search" placeholder="Zoeken..."/>
+                                <input className="pt-input" type="text"  id="search" onChange={this.props.onSearch} placeholder="Zoeken..."/>
                                 <span className="pt-icon pt-icon-search"></span>
                             </div>
                         </FormGroup>

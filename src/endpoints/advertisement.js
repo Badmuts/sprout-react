@@ -1,3 +1,3 @@
 import http from '../store/http';
 
-export const findAdvertisements = () => http.get('/advertisements')
+export const findAdvertisements = (query) => http.get('/advertisements', { params: query})
