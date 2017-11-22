@@ -1,0 +1,10 @@
+.Login {
+    background-image: url(./bg.jpg);
+    background-size: cover;
+    background-color: rgba(3, 47, 50, 1);
+    background-blend-mode: multiply;
+    position: relative;
+    display: block;
+    height:100vh;
+    width:100%;
+}

@@ -4,6 +4,7 @@ import { register } from '../endpoints/auth';
 import { Redirect } from 'react-router-dom';
 import auth from '../store/auth';
 import { Callout, Intent } from '@blueprintjs/core';
+import Login from '../components/Login';
 
 export default class RegisterContainer extends Component {
     constructor(props) {
@@ -37,11 +38,12 @@ export default class RegisterContainer extends Component {
         }
 
         return (
-            <div className="Container">
+            <Login>
                 <LoginForm 
                     title="Register"
                     onSubmit={this.handleOnSubmit} 
-                    onChange={this.handleOnChange}>
+                    onChange={this.handleOnChange}
+                    showRegister={false}>
                     {errorMessage && (
                         <Callout iconName="error" intent={Intent.DANGER}>
                             <h5>Oeps!</h5>
@@ -49,7 +51,7 @@ export default class RegisterContainer extends Component {
                         </Callout>
                     )}
                 </LoginForm>
-            </div>
+            </Login>
         );
     }
 }

@@ -1,7 +1,8 @@
-import { getToken } from './token';
+import { getToken, removeToken } from './token';
 
 const auth = {
-    isAuthenticated: () => (getToken() !== null)
+    isAuthenticated: () => (getToken() !== null),
+    logout: () => removeToken()
 };
 
 export default auth;

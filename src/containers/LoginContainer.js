@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import LoginForm from '../components/LoginForm';
 import { login } from '../endpoints/auth';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import auth from '../store/auth';
 import { Callout, Intent } from '@blueprintjs/core';
+import Login from '../components/Login';
 
 class LoginContainer extends Component {
     constructor(props) {
@@ -38,11 +39,12 @@ class LoginContainer extends Component {
         }
 
         return (
-            <div className="Container">
+            <Login>
                 <LoginForm 
                     title="Login"
                     onSubmit={this.handleOnSubmit} 
-                    onChange={this.handleOnChange}>
+                    onChange={this.handleOnChange}
+                    showRegister={true}>
                     {errorMessage && (
                         <Callout iconName="error" intent={Intent.DANGER}>
                             <h5>Oeps!</h5>
@@ -50,9 +52,8 @@ class LoginContainer extends Component {
                         </Callout>
                     )}
                 </LoginForm>
-                <Link className="pt-button pt-minimal" to="/auth/register">Register</Link>
-            </div>
-            
+                {/* <Link className="pt-button pt-minimal pt-fill" to="/auth/register">Register</Link> */}
+            </Login>
         );
     }
 }
