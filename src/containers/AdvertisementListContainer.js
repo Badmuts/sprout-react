@@ -19,7 +19,6 @@ export default class AdvertisementListContainer extends Component {
         const { advertisements, loading } = this.state;
         return (
             <div className="Container">
-                <h1>Advertenties</h1>
                 {loading 
                     ? (<NonIdealState visual={<Spinner />} />)
                     : (<AdvertisementList advertisements={advertisements} />)}

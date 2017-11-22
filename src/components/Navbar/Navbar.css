@@ -1,0 +1,36 @@
+nav.Navbar {
+    color: #ffffff;
+    background-color: #018F97;
+    background-image: url(./bg.png);
+    background-size: cover;
+    box-shadow: none;
+    height: 54px;
+    border-bottom: 1px solid #007B82;
+}
+
+.Navbar .pt-navbar-group {
+    height: 54px;
+}
+
+.Navbar .pt-navbar-heading .fa {
+    color: #04585D;
+}
+
+.Navbar .pt-button[class*="pt-icon-"]::before {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.Navbar .pt-button.pt-minimal,
+.Navbar .pt-button.pt-minimal:hover,
+.Navbar .pt-button.pt-minimal.pt-active,
+.Navbar .pt-button.pt-minimal.pt-active:hover {
+    color: #ffffff;
+}
+
+.Navbar .pt-button.pt-minimal.pt-active {
+    background: rgba(4, 88, 93, 0.5);
+}
+
+.Navbar .pt-button.pt-minimal.pt-active:hover {
+    background: rgba(4, 88, 93, 0.3);
+}

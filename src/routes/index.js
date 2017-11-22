@@ -24,14 +24,17 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 export default (
-    <App>
-       <Switch>
+    <div>
+        <Switch>
             <Route exact path="/auth/login" component={LoginContainer}/>
             <Route exact path="/auth/register" component={RegisterContainer}/>
-            <PrivateRoute exact path="/demand" component={AdvertisementListContainer}/>
-            <PrivateRoute exact path="/supply" component={AdvertisementListContainer}/>
-            <Redirect to="/demand" />
-        </Switch> 
-    </App>
-    
+            <Switch>
+                <App>
+                    <PrivateRoute exact path="/demand" component={AdvertisementListContainer}/>
+                    <PrivateRoute exact path="/supply" component={AdvertisementListContainer}/>
+                    <Redirect to="/demand" />
+                </App>
+            </Switch> 
+        </Switch>
+    </div>
 );

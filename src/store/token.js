@@ -1,4 +1,4 @@
-const getToken = () => window.localStorage.getItem('accesstoken');
-const setToken = (token) => window.localStorage.setItem('accesstoken', token);
+const getToken = () => window.localStorage.getItem('sprout.accesstoken');
+const setToken = (token) => window.localStorage.setItem('sprout.accesstoken', token);
 
 export { getToken, setToken };

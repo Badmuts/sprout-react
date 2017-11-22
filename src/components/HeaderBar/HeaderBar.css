@@ -1,0 +1,21 @@
+.HeaderBar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #DEDEDE;
+    margin-bottom: 30px;
+    height: 95px;
+}
+
+.HeaderBar-group {
+    display: flex;
+    align-items: center;
+    height: 95px;
+}
+
+.HeaderBar-group.pt-align-left { float: left; }
+.HeaderBar-group.pt-align-right { float: right; }
+
+.HeaderBar-divider {
+    margin: 0 26px;
+    height: 30px;
+    border-left: 1px solid rgba(222, 222, 222, 0.3);
+}

@@ -5,6 +5,7 @@ import routes from './routes';
 import registerServiceWorker from './registerServiceWorker';
 import 'normalize.css';
 import 'flexboxgrid';
+import 'font-awesome/css/font-awesome.css';
 import '@blueprintjs/core/dist/blueprint.css'
 
 ReactDOM.render(<Router children={routes} />, document.getElementById('root'));
