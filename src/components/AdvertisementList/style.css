@@ -1,0 +1,23 @@
+.Advertisement-image {
+  background-color: #f5f5f5;
+  padding-left: 0 !important;
+  margin-left: -1.3rem;
+  margin-top: -1.3rem;
+  margin-bottom: -1.2rem;
+  width: 225px;
+  text-align: center;
+  min-height: 195px;
+  display: flex;
+  overflow: auto;
+  height: inherit;
+}
+
+.Advertisement-image .fa {
+  flex: 1;
+  color: rgba(4, 88, 93, 0.1);
+}
+
+.Advertisement {
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
