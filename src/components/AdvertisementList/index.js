@@ -4,13 +4,7 @@ import "./style.css";
 
 const renderImage = ad => {
   if (ad.image) {
-    return (
-      <img
-        src="http://placehold.it/200x200"
-        alt={ad.title}
-        className="col-xs"
-      />
-    );
+    return <img src={ad.image.url} alt={ad.title} className="col-xs" />;
   }
   return <span className="fa fa-fw fa-lg fa-leaf" />;
 };
