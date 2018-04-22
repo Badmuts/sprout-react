@@ -4,9 +4,9 @@
   margin-left: -1.3rem;
   margin-top: -1.3rem;
   margin-bottom: -1.2rem;
-  width: 225px;
+  width: 175px;
   text-align: center;
-  min-height: 195px;
+  min-height: 155px;
   display: flex;
   overflow: auto;
   height: inherit;
@@ -19,5 +19,5 @@
 
 .Advertisement {
   overflow: hidden;
-  margin-bottom: 2rem;
+  border-radius: 0 !important;
 }

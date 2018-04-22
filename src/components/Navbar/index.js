@@ -34,7 +34,7 @@ export default class Navbar extends Component {
     renderUserMenu() {
         return (
             <Menu>
-                <MenuDivider title="TEST"/>
+                <MenuDivider title={this.props.user && this.props.user.email}/>
                 <MenuItem
                     iconName="log-out"
                     onClick={this.props.logout}

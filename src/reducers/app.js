@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 import {
   REQUEST_ADVERTISEMENTS,
-  RECEIVE_ADVERTISEMENTS
+  RECEIVE_ADVERTISEMENTS,
+  SEARCH_ADVERTISEMENTS
 } from "../actions/advertisement";
 
 const initialState = {
@@ -11,6 +12,8 @@ const initialState = {
 const advertisements = (
   state = {
     isFetching: false,
+    searchQuery: { title: '' },
+    searchResults: [],
     advertisements: []
   },
   action
@@ -26,6 +29,13 @@ const advertisements = (
         ...state,
         isFetching: false,
         advertisements: action.advertisements
+      };
+    case SEARCH_ADVERTISEMENTS:
+      return {
+        ...state,
+        isFetching: false,
+        searchQuery: action.searchQuery,
+        searchResults: action.searchResults
       };
     default:
       return state;

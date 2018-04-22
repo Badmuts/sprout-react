@@ -1,12 +1,23 @@
 body,
 html {
   background: #fbfbfb;
+  font-family: "Source Sans Pro" !important;
+  font-size: 16px !important;
 }
 
-body,
-html {
-  /* font-family: "Roboto", sans-serif !important; */
+form,
+input {
+	font-family: "Source Sans Pro" !important;
 }
+
+.pt-button {
+	font-family: "Source Sans Pro";
+}
+
+/*body,
+html {
+   font-family: "Roboto", sans-serif !important; 
+}*/
 
 .Container {
   margin: 0 auto;

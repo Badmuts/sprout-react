@@ -6,7 +6,7 @@ export default class Login extends Component {
     render() {
         return (
             <div className="Login">
-                <div className="Container">
+                <div className="LoginContainer">
                     {this.props.children}
                 </div>
             </div>

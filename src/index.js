@@ -1,29 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import { createLogger } from "redux-logger";
-import app from "./reducers/app";
-import routes from "./routes";
+import Routes from "./routes";
 import registerServiceWorker from "./registerServiceWorker";
+import configureStore from "./store";
+import throttle from "lodash/throttle";
+import { saveState, loadState } from "./store/localstorage";
 import "normalize.css";
 import "flexboxgrid";
 import "font-awesome/css/font-awesome.css";
 import "@blueprintjs/core/dist/blueprint.css";
 
-const middleware = [thunk];
-if (process.env.NODE_ENV !== "production") {
-  middleware.push(createLogger());
-}
-
-const store = createStore(app, applyMiddleware(...middleware));
+const persistedState = loadState();
+const store = configureStore(persistedState)
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <Router children={routes} />
+    <Routes />
   </Provider>
+);
+
+store.subscribe(
+  throttle(() => {
+    const state = { AuthenticatedUser: store.getState().AuthenticatedUser }
+    saveState(state);
+  }, 1000)
 );
 
 ReactDOM.render(<Root store={store} />, document.getElementById("root"));

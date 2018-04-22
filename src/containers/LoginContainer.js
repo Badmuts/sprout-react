@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import LoginForm from '../components/LoginForm';
-import { login } from '../endpoints/auth';
+import { connect } from "react-redux";
 import { Redirect } from 'react-router-dom';
-import auth from '../store/auth';
 import { Callout, Intent } from '@blueprintjs/core';
+import LoginForm from '../components/LoginForm';
 import Login from '../components/Login';
+import { login } from "../store/AuthenticatedUser/actions";
 
 class LoginContainer extends Component {
     constructor(props) {
@@ -12,16 +12,13 @@ class LoginContainer extends Component {
         this.state = {
             email: '',
             password: '',
-            loggedIn: auth.isAuthenticated(),
             errorMessage: ''
         };
     }
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        login(this.state.email, this.state.password)
-            .then(this.setState({loggedIn: auth.isAuthenticated()}))
-            .catch(this.setState({errorMessage: 'Er ging iets mis. Probeer het opnieuw'}));
+        this.props.login(this.state.email, this.state.password);
     }
 
     handleOnChange = (propertyName, event) => {
@@ -31,10 +28,10 @@ class LoginContainer extends Component {
     }
 
     render() {
-        const { loggedIn, errorMessage } = this.state;
+        const { user, error, loading } = this.props;
         const { from } = this.props.location.state || { from: { pathname: '/' } };
-        
-        if (loggedIn) {
+
+        if (user) {
             return (<Redirect to={from} />)
         }
 
@@ -44,13 +41,14 @@ class LoginContainer extends Component {
                     title="Login"
                     onSubmit={this.handleOnSubmit} 
                     onChange={this.handleOnChange}
-                    showRegister={true}>
-                    {errorMessage && (
+                    showRegister={true}
+                    loading={loading}>
+                    {(error && (
                         <Callout iconName="error" intent={Intent.DANGER}>
                             <h5>Oeps!</h5>
-                            {errorMessage}
+                            {error.message}
                         </Callout>
-                    )}
+                    ))}
                 </LoginForm>
                 {/* <Link className="pt-button pt-minimal pt-fill" to="/auth/register">Register</Link> */}
             </Login>
@@ -58,4 +56,13 @@ class LoginContainer extends Component {
     }
 }
 
-export default LoginContainer;
+const mapStateToProps = state => {
+  const { AuthenticatedUser } = state;
+  return AuthenticatedUser;
+};
+
+const mapDispatchToProps = {
+    login: login
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
