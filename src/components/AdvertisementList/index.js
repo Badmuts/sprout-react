@@ -14,7 +14,7 @@ export default class AdvertisementList extends Component {
     return (
       <div className="row">
         <div className="col-xs-3">
-          <h5 style={{ marginBottom: '23px'}}>Filter</h5>
+          <h4 style={{ marginBottom: '23px'}}>Filter</h4>
           <div className="" style={{ marginBottom: '17px'}}>
             <div>
               <div className="pt-tag pt-tag-removable pt-intent-success">

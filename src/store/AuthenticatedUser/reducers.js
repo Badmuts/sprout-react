@@ -45,6 +45,23 @@ const AuthenticatedUser = (state = initialState, action) => {
         accessToken: null,
         refreshToken: null
       }
+    case ActionTypes.REGISTER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+    case ActionTypes.REGISTER_REQUEST_SUCCESS:
+      return {
+        ...state,
+        loading: false
+      }
+    case ActionTypes.REGISTER_REQUEST_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      }
     default:
       return state;
   }

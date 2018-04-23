@@ -54,3 +54,20 @@ export const logout = () => (dispatch, getState) => {
 	token.removeToken();
 	dispatch(signOut())
 }
+
+export const REGISTER_REQUEST = "REGISTER_REQUEST";
+export const REGISTER_REQUEST_SUCCESS = "REGISTER_REQUEST_SUCCESS";
+export const REGISTER_REQUEST_FAILURE = "REGISTER_REQUEST_FAILURE";
+
+const registerReq = () => ({ type: REGISTER_REQUEST })
+const registerReqSuccess = () => ({ type: REGISTER_REQUEST_SUCCESS })
+const registerReqFailure = error => ({ type: REGISTER_REQUEST_FAILURE, error })
+
+export const register = (email, password) => (dispatch, getState, { http }) => {
+	dispatch(registerReq())
+	return http.post("/users", {email, password})
+		.then(res => res.data)
+		.then(user => dispatch(login(email, password)))
+		.then(() => dispatch(registerReqSuccess()))
+		.catch(err => dispatch(registerReqFailure(err)))
+}

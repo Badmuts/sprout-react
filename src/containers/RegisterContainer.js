@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import LoginForm from '../components/LoginForm';
-import { register } from '../endpoints/auth';
+import { register } from '../store/AuthenticatedUser/actions';
 import { Redirect } from 'react-router-dom';
-import auth from '../store/auth';
 import { Callout, Intent } from '@blueprintjs/core';
 import Login from '../components/Login';
 
-export default class RegisterContainer extends Component {
+class RegisterContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            password: '',
-            loggedIn: auth.isAuthenticated(),
-            errorMessage: ''
+            password: ''
         };
     }
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        register(this.state.email, this.state.password)
-            .then(this.setState({loggedIn: true}))
-            .catch(this.setState({errorMessage: 'Oeps! Er ging iets mis. Probeer het opnieuw'}));
+        this.props.register(this.state.email, this.state.password);
     }
 
     handleOnChange = (propertyName, event) => {
@@ -31,10 +27,10 @@ export default class RegisterContainer extends Component {
     }
 
     render() {
-        const { loggedIn, errorMessage } = this.state;
+        const { accessToken, error } = this.props;
         
-        if (loggedIn) {
-            return (<Redirect to="/auth/login" />)
+        if (accessToken) {
+            return (<Redirect to="/" />)
         }
 
         return (
@@ -44,10 +40,10 @@ export default class RegisterContainer extends Component {
                     onSubmit={this.handleOnSubmit} 
                     onChange={this.handleOnChange}
                     showRegister={false}>
-                    {errorMessage && (
+                    {error && (
                         <Callout iconName="error" intent={Intent.DANGER}>
                             <h5>Oeps!</h5>
-                            {errorMessage}
+                            {error.message}
                         </Callout>
                     )}
                 </LoginForm>
@@ -55,3 +51,14 @@ export default class RegisterContainer extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+  const { AuthenticatedUser } = state;
+  return AuthenticatedUser;
+};
+
+const mapDispatchToProps = {
+    register: register
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer);
