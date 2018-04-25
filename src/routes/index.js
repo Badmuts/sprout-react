@@ -10,6 +10,7 @@ import App from '../components/App';
 import LoginContainer from '../containers/LoginContainer';
 import RegisterContainer from '../containers/RegisterContainer';
 import AdvertisementListContainer from '../containers/AdvertisementListContainer';
+import SettingsContainer from '../containers/SettingsContainer';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
@@ -31,11 +32,12 @@ const Routes = (props) => (
         <Route exact path="/auth/register" component={RegisterContainer}/>
         <Switch>
             <App>
+                <PrivateRoute path="/settings" component={SettingsContainer} {...props}/>
                 <PrivateRoute exact path="/demand" component={AdvertisementListContainer} {...props}/>
                 <PrivateRoute exact path="/supply" component={AdvertisementListContainer} {...props}/>
-                <Redirect to="/demand" />
+                {/* <Redirect to="/demand" /> */}
             </App>
-        </Switch> 
+        </Switch>
     </Switch>
 </Router>
 );

@@ -36,6 +36,12 @@ export default class Navbar extends Component {
             <Menu>
                 <MenuDivider title={this.props.user && this.props.user.email}/>
                 <MenuItem
+                    iconName="cog"
+                    text="Instellingen"
+                    href="/settings"
+                />
+                <MenuDivider />
+                <MenuItem
                     iconName="log-out"
                     onClick={this.props.logout}
                     text="Uitloggen"
