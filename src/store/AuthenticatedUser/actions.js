@@ -25,7 +25,7 @@ const setToken = token => ({
 	token
 })
 
-const setUser = user => ({
+export const setUser = user => ({
 	type: SET_AUTHENTICATED_USER,
 	user
 })
