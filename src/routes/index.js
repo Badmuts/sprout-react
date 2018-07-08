@@ -7,10 +7,13 @@ import {
 import { connect } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from '../components/App';
-import LoginContainer from '../containers/LoginContainer';
-import RegisterContainer from '../containers/RegisterContainer';
-import AdvertisementListContainer from '../containers/AdvertisementListContainer';
-import SettingsContainer from '../containers/SettingsContainer';
+import LoginContainer from '../containers/auth/LoginContainer';
+import RegisterContainer from '../containers/auth/RegisterContainer';
+import AdvertisementListContainer from '../containers/ads/AdvertisementListContainer';
+import AdDetailContainer from '../containers/ads/AdDetailContainer';
+import SettingsContainer from '../containers/settings/SettingsContainer';
+import CompanyDetailContainer from '../containers/company/CompanyDetailContainer';
+import AdCreateContainer from '../containers/ads/AdCreateContainer';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
@@ -32,10 +35,15 @@ const Routes = (props) => (
         <Route exact path="/auth/register" component={RegisterContainer}/>
         <Switch>
             <App>
-                <PrivateRoute path="/settings" component={SettingsContainer} {...props}/>
-                <PrivateRoute exact path="/demand" component={AdvertisementListContainer} {...props}/>
-                <PrivateRoute exact path="/supply" component={AdvertisementListContainer} {...props}/>
-                {/* <Redirect to="/demand" /> */}
+                <Switch>
+                    <PrivateRoute path="/settings" component={SettingsContainer} {...props}/>
+                    <PrivateRoute exact path="/a/demand" component={AdvertisementListContainer} {...props}/>
+                    <PrivateRoute exact path="/a/supply" component={AdvertisementListContainer} {...props}/>
+                    <PrivateRoute exact path="/a/create" component={AdCreateContainer} {...props}/>
+                    <PrivateRoute exact path="/a/:id(\d+)" component={AdDetailContainer} {...props}/>
+                    <PrivateRoute exact path="/c/:id(\d+)" component={CompanyDetailContainer} {...props}/>
+                    <Redirect exact to="/a/supply" />
+                </Switch>
             </App>
         </Switch>
     </Switch>

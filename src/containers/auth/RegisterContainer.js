@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import LoginForm from '../components/LoginForm';
-import { register } from '../store/AuthenticatedUser/actions';
+import LoginForm from '../../components/LoginForm';
+import { register } from '../../store/AuthenticatedUser/actions';
 import { Redirect } from 'react-router-dom';
 import { Callout, Intent } from '@blueprintjs/core';
-import Login from '../components/Login';
+import Login from '../../components/Login';
 
 class RegisterContainer extends Component {
     constructor(props) {

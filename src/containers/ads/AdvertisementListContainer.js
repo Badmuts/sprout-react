@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import AdvertisementList from "../components/AdvertisementList";
-import HeaderBar from "../components/HeaderBar";
+import AdvertisementList from "../../components/Advertisements/AdvertisementList";
+import { AdvertisementListFilter } from "../../components/Advertisements/AdvertisementListFilter";
+import HeaderBar from "../../components/HeaderBar";
 import { NonIdealState, Spinner } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import {fetchAdvertisements} from "../store/Advertisements/actions"
+import {fetchAdvertisements} from "../../store/Advertisements/actions"
 
 class AdvertisementListContainer extends Component {
   static propTypes = {
@@ -31,7 +32,14 @@ class AdvertisementListContainer extends Component {
           {isFetching ? (
             <NonIdealState visual={<Spinner />} />
           ) : (
-            <AdvertisementList advertisements={advertisements} />
+            <div className="row">
+              <div className="col-xs-3">
+                <AdvertisementListFilter {...this.props} />
+              </div>
+              <div className="col-xs-9">
+                <AdvertisementList {...this.props} />
+              </div>
+            </div>
           )}
         </div>
       </div>

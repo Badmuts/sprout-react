@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import HeaderBar from "../components/HeaderBar";
+import HeaderBar from "../../components/HeaderBar";
 import { FormGroup, Button } from "@blueprintjs/core";
 import { 
     Route, 
@@ -8,10 +8,11 @@ import {
     Redirect,
     NavLink
 } from 'react-router-dom';
-import ProfileContainer from "./settings/ProfileContainer";
-import CompanyContainer from "./settings/CompanyContainer";
+import ProfileContainer from "./ProfileContainer";
+import CompanyContainer from "./CompanyContainer";
+import PlanContainer from "./PlanContainer";
 
-import {fetchAdvertisements} from "../store/Advertisements/actions"
+import {fetchAdvertisements} from "../../store/Advertisements/actions"
 
 export default class SettingsContainer extends Component {
     render() {
@@ -26,7 +27,7 @@ export default class SettingsContainer extends Component {
                                 <li className="pt-tab" role="tab" aria-selected="true"><NavLink to="/settings/profile">Mijn profiel</NavLink></li>
                                 <li className="pt-tab" role="tab"><NavLink to="/settings/company">Bedrijf</NavLink></li>
                                 <li className="pt-tab" role="tab" aria-disabled="true">Emails</li>
-                                <li className="pt-tab" role="tab" aria-disabled="true">Abonnement</li>
+                                <li className="pt-tab" role="tab"><NavLink to="/settings/plans">Abonnement</NavLink></li>
                             </ul>
                         </div>
                     </div>
@@ -35,6 +36,7 @@ export default class SettingsContainer extends Component {
                     <Switch>
                         <Route exact path={this.props.match.url + '/profile'} component={ProfileContainer} />
                         <Route exact path={this.props.match.url + '/company'} component={CompanyContainer} />
+                        <Route exact path={this.props.match.url + '/plans'} component={PlanContainer} />
                         <Redirect to="/settings/profile" />
                     </Switch>
                 </div>

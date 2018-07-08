@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import { Callout, Intent } from '@blueprintjs/core';
-import LoginForm from '../components/LoginForm';
-import Login from '../components/Login';
-import { login } from "../store/AuthenticatedUser/actions";
+import LoginForm from '../../components/LoginForm';
+import Login from '../../components/Login';
+import { login } from "../../store/AuthenticatedUser/actions";
 
 class LoginContainer extends Component {
     constructor(props) {

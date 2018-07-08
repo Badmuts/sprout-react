@@ -1,4 +1,5 @@
 import * as token from "../token";
+import * as company from "./../Companies/actions";
 
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_REQUEST_SUCCESS = "LOGIN_REQUEST_SUCCESS";
@@ -45,6 +46,7 @@ export const login = (email, password) => (dispatch, getState, { http }) => {
         })
         .then(res => {
         	dispatch(setUser(res.data))
+        	dispatch(company.addEntity(res.data.company))
         	return dispatch(loginReqSuccess())
         })
         .catch(err => dispatch(loginReqFailure(err)))
