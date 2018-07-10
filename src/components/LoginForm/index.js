@@ -22,23 +22,30 @@ export default class LoginForm extends Component {
                 <div className="col-xs-8 top-xs col-xs-offset-2">
                   <form name="login" onSubmit={this.props.onSubmit}>
                     <div className="pt-control-group pt-vertical">
+                      {!this.props.showRegister && (
+                        <div className="pt-input-group pt-large">
+                          <span className="pt-icon pt-icon-shop"></span>
+                          <input className="pt-input pt-large pt-fill" type="text" name="company.name" id="company.name" placeholder="Bedrijfsnaam" onChange={this.props.onChange.bind(this, 'company_attributes.name')} required autoFocus tabIndex="1" />
+                        </div>
+                        )}
+
                       <div className="pt-input-group pt-large">
                         <span className="pt-icon pt-icon-envelope"></span>
-                        <input className="pt-input pt-large pt-fill" type="email" name="email" id="email" placeholder="E-mailadres" onChange={this.props.onChange.bind(this, 'email')} required autoFocus tabIndex="1" />
+                        <input className="pt-input pt-large pt-fill" type="email" name="email" id="email" placeholder="E-mailadres" onChange={this.props.onChange.bind(this, 'email')} required autoFocus tabIndex="2" />
                       </div>
                     
                       <div className="pt-input-group pt-large">
                         <span className="pt-icon pt-icon-lock"></span>
-                        <input className="pt-input pt-large pt-fill" type="password" name="password" id="password" placeholder="Wachtwoord" onChange={this.props.onChange.bind(this, 'password')} required tabIndex="2" />
+                        <input className="pt-input pt-large pt-fill" type="password" name="password" id="password" placeholder="Wachtwoord" onChange={this.props.onChange.bind(this, 'password')} required tabIndex="3" />
                       </div>
                     </div>
 
                     {this.props.showRegister
-                      ? (<div className="pt-control-group"><Checkbox checked={false} label="Onthoud mij" tabIndex="3"/></div>)
+                      ? (<div className="pt-control-group"><Checkbox checked={false} label="Onthoud mij" tabIndex="4"/></div>)
                       : null}
 
                     <div className="LoginFormFooter">
-                      <Button className="pt-large" type="submit" intent={Intent.SUCCESS} tabIndex="4" loading={this.props.loading}>{this.props.title}</Button>
+                      <Button className="pt-large" type="submit" intent={Intent.SUCCESS} tabIndex="5" loading={this.props.loading}>{this.props.title}</Button>
                       {this.props.showRegister 
                         ? (<Link className="pt-button pt-minimal pt-large" to="/auth/register">Registreren</Link>)
                         : (<Link className="pt-button pt-minimal pt-large" to="/auth/login">Ik heb al een account</Link>)}

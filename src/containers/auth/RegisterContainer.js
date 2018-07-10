@@ -5,25 +5,27 @@ import { register } from '../../store/AuthenticatedUser/actions';
 import { Redirect } from 'react-router-dom';
 import { Callout, Intent } from '@blueprintjs/core';
 import Login from '../../components/Login';
+import _ from 'lodash';
 
 class RegisterContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            company_attributes: { name: '' }
         };
     }
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        this.props.register(this.state.email, this.state.password);
+        this.props.register(this.state);
     }
 
     handleOnChange = (propertyName, event) => {
         const state = this.state;
-        state[propertyName] = event.target.value;
-        this.setState({state});
+        _.set(state, propertyName, event.target.value)
+        this.setState(state, () => console.log(this.state));
     }
 
     render() {

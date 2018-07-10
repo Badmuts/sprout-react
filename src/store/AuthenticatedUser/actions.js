@@ -65,11 +65,11 @@ const registerReq = () => ({ type: REGISTER_REQUEST })
 const registerReqSuccess = () => ({ type: REGISTER_REQUEST_SUCCESS })
 const registerReqFailure = error => ({ type: REGISTER_REQUEST_FAILURE, error })
 
-export const register = (email, password) => (dispatch, getState, { http }) => {
+export const register = (obj) => (dispatch, getState, { http }) => {
 	dispatch(registerReq())
-	return http.post("/users", {email, password})
+	return http.post("/users", obj)
 		.then(res => res.data)
-		.then(user => dispatch(login(email, password)))
+		.then(user => dispatch(login(obj.email, obj.password)))
 		.then(() => dispatch(registerReqSuccess()))
 		.catch(err => dispatch(registerReqFailure(err)))
 }
