@@ -1,5 +1,7 @@
-const getToken = () => window.localStorage.getItem('sprout.accesstoken');
-const setToken = (token) => window.localStorage.setItem('sprout.accesstoken', token);
-const removeToken = () => window.localStorage.removeItem('sprout.accesstoken');
+import localStorage from "./localstorage";
+
+const getToken = () => localStorage.get('accesstoken');
+const setToken = (token) => localStorage.set('accesstoken', token);
+const removeToken = () => localStorage.remove('accesstoken');
 
 export { getToken, setToken, removeToken };

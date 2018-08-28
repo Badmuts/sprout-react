@@ -1,10 +1,42 @@
 .Login {
-    background-image: url(./bg.jpg);
+    /*background-image: url(./bg.jpg);*/
     background-size: cover;
-    background-color: rgba(3, 47, 50, 1);
+    /*background-color: rgba(3, 47, 50, 1);*/
+    background-color: #ECF1F0;
     background-blend-mode: multiply;
     position: relative;
     display: block;
     height:100vh;
     width:100%;
+}
+
+.LoginContainer {
+	margin: 0 auto;
+	width: 1280px;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    .LoginContainer {
+        width: 100%;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .LoginContainer {
+        width: 100%;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .LoginContainer {
+        width: 100%;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    
 }

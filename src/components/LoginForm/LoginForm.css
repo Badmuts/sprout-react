@@ -6,12 +6,81 @@
     text-align: left;
     min-height: 300px;
     background-color: #ffffff;
-    padding: 30px 0;
-    border-radius: 4px;
-    border: 1px solid rgba(222, 222, 222, 1);
-    box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 8px 124px 0 rgba(0, 0, 0, 0.2);
 }
 
-.box {
-    padding: 0 20px;
+.LoginForm form {
+	margin-top: 15%;
+	margin-bottom: 20%;
+}
+
+.LoginForm form .pt-control-group {
+	margin-bottom: 20px;
+}
+
+.LoginForm .pt-minimal {
+	box-shadow: inset 0 0 0 1px black, inset 0 -1px 0 black;
+}
+
+.Title {
+	margin-bottom: 5%;
+	margin-top: 10%;
+	text-align: left;
+}
+
+.Title h1 {
+	font-weight: 700;
+	margin-top: 60px;
+	color: #4a4a4a;
+}
+
+.Title .fa {
+	opacity: .25;
+}
+
+.Splash {
+	position: relative;
+	overflow: hidden;
+	padding-right: 0;
+	margin: 0;
+	border: 0;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.Splash img {
+	margin-left: -25%;
+	margin-top: -25%;
+	width: 150%;
+	height: 150%;
+	z-index: 1;
+}
+
+.SplashContent {
+	background: rgba(0, 0, 0, 0.2);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+	padding-left: 6rem;
+	padding-top: 64%;
+	font-size: 15px;
+}
+
+.SplashContent h1 {
+	color: #ffffff;
+}
+
+.LoginFormFooter {
+	text-align: left;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.LoginFormTerms {
+	text-align: left;
+	margin-top: 120px;
 }

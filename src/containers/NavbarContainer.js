@@ -1,24 +1,19 @@
 import React, {Component} from 'react';
-import auth from '../store/auth';
+import { connect } from "react-redux";
 import Navbar from '../components/Navbar';
-import { Redirect } from 'react-router-dom';
+import { logout } from "../store/AuthenticatedUser/actions";
 
-export default class NavbarContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { logout: false };
-    }
-
-    logout = () => {
-        auth.logout();
-        this.setState({ logout: true });
-    }
-
+class NavbarContainer extends Component {
     render() {
-        const {logout} = this.state;
-        if (logout) {
-            return (<Redirect to="/auth/login"/>);
-        }
-        return (<Navbar logout={this.logout}/>);
+        return (<Navbar {...this.props} />);
     }
 }
+
+const mapStateToProps = state => {
+  const { AuthenticatedUser } = state;
+  return { user: AuthenticatedUser.user };
+};
+
+export default connect(mapStateToProps, {
+    logout: logout
+})(NavbarContainer);

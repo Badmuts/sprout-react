@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Intent, FormGroup } from '@blueprintjs/core';
+import { Button, AnchorButton, Intent } from '@blueprintjs/core';
 import '../App/App.css';
 import './HeaderBar.css';
 
@@ -8,20 +8,22 @@ export default class HeaderBar extends Component {
         return (
             <div className="HeaderBar">
                 <div className="Container">
-                    <div className="HeaderBar-group pt-align-left">
-                        <Button className="pt-large" iconName="plus" intent={Intent.SUCCESS}>Aanbod plaatsen</Button>
-                        <span className="HeaderBar-divider"></span>
-                        <FormGroup label="Trefwoord" labelFor="search">
-                            <div className="pt-input-group">
-                                <input className="pt-input" type="text"  id="search" onChange={this.props.onSearch} placeholder="Zoeken..."/>
-                                <span className="pt-icon pt-icon-search"></span>
+                    {!this.props.children ? (
+                        <div>
+                            <div className="HeaderBar-group pt-align-left">
+                                <AnchorButton className="pt-large" iconName="plus" intent={Intent.SUCCESS} href="/a/create">Aanbod plaatsen</AnchorButton>
+                                <span className="HeaderBar-divider"></span>
+                                <div className="pt-input-group pt-large">
+                                    <input className="pt-input pt-large" type="text"  id="search" onChange={this.props.onSearch} placeholder="Zoeken..."/>
+                                    <span className="pt-icon pt-icon-search"></span>
+                                </div>
                             </div>
-                        </FormGroup>
-                    </div>
-                    <div className="HeaderBar-group pt-align-right">
-                        <span className="HeaderBar-divider"></span>
-                        <Button className="pt-large" intent={Intent.PRIMARY}>Zoeken</Button>
-                    </div>
+                            <div className="HeaderBar-group pt-align-right">
+                                <span className="HeaderBar-divider"></span>
+                                <Button className="pt-large" intent={Intent.PRIMARY}>Zoeken</Button>
+                            </div>
+                        </div>
+                    ) : (this.props.children)}
                 </div>
             </div>
         );
