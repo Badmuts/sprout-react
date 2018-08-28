@@ -13,11 +13,13 @@ export default class Navbar extends Component {
                         <div className="pt-navbar-heading"><span className="fa fa-fw fa-leaf" /> Sprout</div>
                         <NavLink 
                             className="pt-button pt-minimal" 
-                            to="/supply"
+                            exact
+                            to="/a/supply"
                             activeClassName="pt-active">Aanbod</NavLink>
                         <NavLink 
                             className="pt-button pt-minimal" 
-                            to="/demand"
+                            exact
+                            to="/a/demand"
                             activeClassName="pt-active">Vraag</NavLink>
                     </div>
                     <div className="pt-navbar-group pt-align-right">
@@ -34,7 +36,13 @@ export default class Navbar extends Component {
     renderUserMenu() {
         return (
             <Menu>
-                <MenuDivider title="TEST"/>
+                <MenuDivider title={this.props.user && this.props.user.email}/>
+                <MenuItem
+                    iconName="cog"
+                    text="Instellingen"
+                    href="/settings"
+                />
+                <MenuDivider />
                 <MenuItem
                     iconName="log-out"
                     onClick={this.props.logout}
